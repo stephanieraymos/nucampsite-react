@@ -13,21 +13,7 @@ class Directory extends Component {
     onCampsiteSelect(campsite) {
         this.setState({selectedCampsite: campsite});
     }
-
-    renderSelectedCampsite(campsite) {
-        if (campsite) {
-            return (
-                <Card>
-                    <CardImg top src={campsite.image} alt={campsite.name} />
-                    <CardBody>
-                        <CardTitle>{campsite.name}</CardTitle>
-                        <CardText>{campsite.description}</CardText>
-                    </CardBody>
-                </Card>
-            );
-        }
-        return <div />;
-    }
+//Deleted    renderSelectedCampsite(campsite)
 
     render() {
         const directory = this.props.campsites.map(campsite => {
