@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-export default class CampsiteInfo extends Component {
+class CampsiteInfo extends Component {
   render() {
-    if (campsite != null){
+    if (this.props.campsite != null){
       return (
         <div className="row">
           
@@ -19,4 +19,4 @@ export default class CampsiteInfo extends Component {
   }
 }
 
-export default CampsiteInfo
+export default CampsiteInfo;
