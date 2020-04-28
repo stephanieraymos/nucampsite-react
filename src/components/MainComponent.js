@@ -13,8 +13,8 @@ class Main extends Component {
       };
   }
 
-  onCampsiteSelect(campsite) {
-    this.setState({selectedCampsite: campsite});
+  onCampsiteSelect(campsiteId) {
+    this.setState({selectedCampsite: campsiteId});
 }
 
     render() {
