@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Directory from './DirectoryComponent';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import { CAMPSITES } from '../shared/campsites';
+import CampsiteInfo from './CampsiteInfoComponent';
 
 class Main extends Component {
   constructor(props) {
