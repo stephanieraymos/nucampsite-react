@@ -10,6 +10,7 @@ import { PARTNERS } from '../shared/partners';
 import { PROMOTIONS } from '../shared/promotions';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Footer from './FooterComponent';
+import CampsiteInfo from './CampsiteInfoComponent';
 
 class Main extends Component {
 
@@ -35,14 +36,14 @@ class Main extends Component {
             );
         }
 
-        const CampsiteWithId = ({match}) => {
-            return (
-                <CampsiteInfo 
+        const CampsiteWithId = ({ match }) => {
+            return ( 
+                <CampsiteInfo
                     campsite={this.state.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]}
                     comments={this.state.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}
                 />
             );
-        }; 
+        }
 
         return (
             <div>
