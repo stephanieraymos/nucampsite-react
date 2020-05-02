@@ -7,19 +7,33 @@ function About(props) {
 
   const partners = props.partners.map(partner => {
     return (
-      <h5>{partner.name}</h5>
+      <React.Fragment>
+      <Media key={partner.id} tag="li">
+      <RenderPartner partner={partner}/>
+      </Media>
+      </React.Fragment>
     );
   });
 
-  // function RenderPartner({ partner }) {
-  //    if ( {partner} ){
-  //      return {
-  //        <React.Fragment>
-  //        <Media object = '', src= {image}, alt={name}, width="150" />
-  //        </React.Fragment>
-  //      }
-  //    }
-  // }
+  function RenderPartner({ partner }) {
+    if ({ partner }) {
+      return (
+        <React.Fragment>
+          <Media object src={partner.image} alt={partner.name} width="150" />
+          <Media body className="ml-5 mb-4">
+            <Media heading={partner.name}>
+            </Media>
+            {partner.description}
+          </Media>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <div>
+        </div>
+      )
+    }
+  }
 
 
   return (
