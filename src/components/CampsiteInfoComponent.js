@@ -47,7 +47,8 @@ class CommentForm extends Component {
           <ModalBody>
             <LocalForm onSubmit={values => this.handleSubmit(values)}>
               <div className="form-group">
-                <Label htmlFor="rating" md={2}>Rating</Label>
+                <Label htmlFor="rating">Rating</Label>
+                <div>
                 <Control.select model=".rating" type="select" id="rating" name="rating">
                   <option>1</option>
                   <option>2</option>
@@ -55,15 +56,18 @@ class CommentForm extends Component {
                   <option>4</option>
                   <option>5</option>
                 </Control.select>
+                </div>
               </div>
 
               <div className="form-group">
-                <Label htmlFor="author" md={2}>Your Name</Label>
+                <Label htmlFor="author">Your Name</Label>
+                <div>
                 <Control.text model=".author" type="text" id="author" name="author" validators={{
                   minLength: minLength(2),
                   maxLength: maxLength(15)
                 }}>
                 </Control.text>
+                </div>
                 <Errors
                   className="text-danger"
                   model=".author"
@@ -78,9 +82,11 @@ class CommentForm extends Component {
               </div>
 
               <div className="form-group">
-                <Label htmlFor="text" md={2}>Comment</Label>
+                <Label htmlFor="text">Comment</Label>
+                <div>
                 <Control.text model=".text" type="text" id="text" name="text">
                 </Control.text>
+                </div>
               </div>
               <Button color="primary" type="submit">Do it!</Button>{' '}
               <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
