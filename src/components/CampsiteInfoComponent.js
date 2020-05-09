@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, Card, CardImg, CardText, CardBody, Label, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, LocalForm, Errors} from 'react-redux-form';
 
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
@@ -48,26 +48,22 @@ class CommentForm extends Component {
             <LocalForm onSubmit={values => this.handleSubmit(values)}>
               <div className="form-group">
                 <Label htmlFor="rating">Rating</Label>
-                <div>
-                <Control.select model=".rating" type="select" id="rating" name="rating">
+                <Control.select model=".rating" type="select" id="rating" name="rating" className="form-control">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
                   <option>5</option>
                 </Control.select>
-                </div>
               </div>
 
               <div className="form-group">
                 <Label htmlFor="author">Your Name</Label>
-                <div>
-                <Control.text model=".author" type="text" id="author" name="author" validators={{
+                <Control.text model=".author" type="text" id="author" name="author" className="form-control" validators={{
                   minLength: minLength(2),
                   maxLength: maxLength(15)
                 }}>
                 </Control.text>
-                </div>
                 <Errors
                   className="text-danger"
                   model=".author"
@@ -83,10 +79,8 @@ class CommentForm extends Component {
 
               <div className="form-group">
                 <Label htmlFor="text">Comment</Label>
-                <div>
-                <Control.text model=".text" type="text" id="text" name="text">
+                <Control.text model=".text" type="text" id="text" name="text" component= "textarea" className="form-control">
                 </Control.text>
-                </div>
               </div>
               <Button color="primary" type="submit">Do it!</Button>{' '}
               <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
