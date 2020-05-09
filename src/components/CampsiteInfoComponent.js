@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardImg, CardText, CardBody, Label, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, Card, CardImg, CardText, CardBody, Label, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
-const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
 
@@ -20,8 +19,8 @@ class CommentForm extends Component {
         rating: false,
         author: false,
         text: false
-    }
-  };
+      }
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -36,8 +35,7 @@ class CommentForm extends Component {
   handleSubmit(values) {
     console.log("Current state is: " + JSON.stringify(values));
     alert("Current state is: " + JSON.stringify(values));
-    Event.preventDefault();
-}
+  }
 
   render() {
     return (
@@ -45,7 +43,7 @@ class CommentForm extends Component {
         <Button outline onClick={this.toggleModal}>
           <i className=" fa fa-pencil" /> Submit Comment</Button>
         <Modal isOpen={this.state.isModalOpen}>
-          <ModalHeader>Submit Comment</ModalHeader>
+          <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
           <ModalBody>
             <LocalForm onSubmit={values => this.handleSubmit(values)}>
               <div className="form-group">
@@ -57,24 +55,14 @@ class CommentForm extends Component {
                   <option>4</option>
                   <option>5</option>
                 </Control.select>
-                <Errors
-                  className="text-danger"
-                  model=".rating"
-                  show="touched"
-                  component="div"
-                  messages={{
-                    required: 'Required'
-                  }}
-                />
               </div>
 
               <div className="form-group">
                 <Label htmlFor="author" md={2}>Your Name</Label>
                 <Control.text model=".author" type="text" id="author" name="author" validators={{
-                                            required, 
-                                            minLength: minLength(2),
-                                            maxLength: maxLength(15)
-                                        }}>
+                  minLength: minLength(2),
+                  maxLength: maxLength(15)
+                }}>
                 </Control.text>
                 <Errors
                   className="text-danger"
@@ -93,18 +81,9 @@ class CommentForm extends Component {
                 <Label htmlFor="text" md={2}>Comment</Label>
                 <Control.text model=".text" type="text" id="text" name="text">
                 </Control.text>
-                <Errors
-                  className="text-danger"
-                  model=".text"
-                  show="touched"
-                  component="div"
-                  messages={{
-                    required: 'Required'
-                  }}
-                />
               </div>
               <Button color="primary" type="submit">Do it!</Button>{' '}
-            <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
+              <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
             </LocalForm>
           </ModalBody>
         </Modal>
