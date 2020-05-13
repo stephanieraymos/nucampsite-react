@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addComment: (campsiteId, rating, author, text) => ( addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
+    addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
     fetchCampsites: () => (fetchCampsites())
 };
 
