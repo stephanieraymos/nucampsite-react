@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
-import { FadeTransform, Random } from 'react-animation-components';
+import { FadeTransform, Fade } from 'react-animation-components';
 
 
 function RenderCard({ item, isLoading, errMess }) {
@@ -17,9 +17,7 @@ function RenderCard({ item, isLoading, errMess }) {
         );
     }
     return (
-        <Random in transformProps={{
-            exitTransform: 'translateY(50%)'
-        }}>
+        <Fade in>
         <FadeTransform
             in
             transformProps={{
@@ -33,7 +31,7 @@ function RenderCard({ item, isLoading, errMess }) {
                 </CardBody>
             </Card>
         </FadeTransform>
-        </Random>
+        </Fade>
     );
 }
 
@@ -55,7 +53,9 @@ function Home(props) {
                         errMess={props.promotionErrMess}
                     />                </div>
                 <div className="col-md m-1">
-                    <RenderCard item={props.partner} />
+                    <RenderCard  item={props.partner}
+                        isLoading={props.partnersLoading}
+                        errMess={props.partnersErrMess} />
                 </div>
             </div>
         </div>
